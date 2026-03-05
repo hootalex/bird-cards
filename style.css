@@ -78,6 +78,7 @@ body {
   padding-bottom: 25px;
    display: flex;
   align-items: flex-end;
+  background: url('img/noisetile.png') repeat;
 
 }
 
