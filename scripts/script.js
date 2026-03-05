@@ -144,5 +144,64 @@ document.addEventListener('DOMContentLoaded', function () {
 			setCardBackground(imgEl.src);
 		});
 	});
+
+	// dropzone functionality
+	const dropzone = document.getElementById('imageDropzone');
+	const fileInput = document.getElementById('imageFileInput');
+
+	if (dropzone && fileInput) {
+		// click to open file picker
+		dropzone.addEventListener('click', function () {
+			fileInput.click();
+		});
+
+		// file input change handler
+		fileInput.addEventListener('change', function (e) {
+			if (e.target.files && e.target.files[0]) {
+				handleImageFile(e.target.files[0]);
+			}
+		});
+
+		// drag over
+		dropzone.addEventListener('dragover', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			dropzone.classList.add('dragover');
+		});
+
+		// drag leave
+		dropzone.addEventListener('dragleave', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			dropzone.classList.remove('dragover');
+		});
+
+		// drop
+		dropzone.addEventListener('drop', function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			dropzone.classList.remove('dragover');
+
+			if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+				const file = e.dataTransfer.files[0];
+				if (file.type.startsWith('image/')) {
+					handleImageFile(file);
+				} else {
+					alert('Please drop an image file.');
+				}
+			}
+		});
+	}
+
+	function handleImageFile(file) {
+		const reader = new FileReader();
+		reader.onload = function (event) {
+			setCardBackground(event.target.result);
+		};
+		reader.onerror = function () {
+			alert('Failed to read the image file.');
+		};
+		reader.readAsDataURL(file);
+	}
 });
 
