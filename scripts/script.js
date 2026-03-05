@@ -203,5 +203,58 @@ document.addEventListener('DOMContentLoaded', function () {
 		};
 		reader.readAsDataURL(file);
 	}
+
+	// load all cards functionality
+	const loadAllCardsBtn = document.getElementById('loadAllCardsBtn');
+	const cardsGallery = document.getElementById('cardsGallery');
+
+	if (loadAllCardsBtn && cardsGallery) {
+		loadAllCardsBtn.addEventListener('click', function () {
+			const galleryImages = document.querySelectorAll('.gallery img');
+			cardsGallery.innerHTML = ''; // clear previous cards
+
+			galleryImages.forEach(function (imgEl) {
+				const cardContainer = document.createElement('div');
+				cardContainer.className = 'birdcard-wrapper';
+
+				const card = document.createElement('div');
+				card.className = 'birdcard web';
+				card.style.backgroundImage = `url("${imgEl.src}")`;
+
+				const speciesInfo = document.createElement('div');
+				speciesInfo.className = 'speciesinfo';
+				speciesInfo.innerHTML = '<div><h4>Species Name</h4><i>Scientific Name</i></div>';
+
+				card.appendChild(speciesInfo);
+				cardContainer.appendChild(card);
+				cardsGallery.appendChild(cardContainer);
+
+				// apply color extraction to this card
+				const tempImg = new Image();
+				tempImg.crossOrigin = 'Anonymous';
+				tempImg.src = imgEl.src;
+				tempImg.addEventListener('load', function () {
+					try {
+						let color = colorThief.getColor(tempImg);
+						color = darken(color, 0.95);
+						let [h, s, l] = rgbToHsl(color);
+						s = Math.max(0, s - 0.1);
+						color = hslToRgb([h, s, l]);
+						if (!meetsWhiteTextContrast(color)) {
+							let factor = 0.92;
+							let attempts = 0;
+							while (!meetsWhiteTextContrast(color) && attempts < 12) {
+								color = darken(color, factor);
+								attempts++;
+							}
+						}
+						speciesInfo.style.background = `linear-gradient(to bottom, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0) 0%, rgba(${color[0]}, ${color[1]}, ${color[2]}, 1) 80%)`;
+					} catch (e) {
+						console.warn('Color extraction failed for card', e);
+					}
+				});
+			});
+		});
+	}
 });
 
