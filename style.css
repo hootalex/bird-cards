@@ -1,0 +1,104 @@
+body {
+  text-align: center;
+  margin: 50px;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #fff9ef;
+}
+
+.birdcard {
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.gallery {
+  margin-top: 50px;
+}
+
+.gallery img {
+  width: 50px;
+  border-radius: 5px;
+}
+
+.web {
+  width: 335px;
+  height: 448px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 4px 10px 0px rgba(22, 27, 38, 0.20);
+  outline: 1px solid rgba(0,0,0,0.2);
+  outline-offset: -1px;
+  background: url("img/amke.webp");
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: end;
+  overflow: hidden;
+}
+
+.currentcolor {
+  width: 20px;
+  border-radius: 5px;
+  height: 20px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.web::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 145px;
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  /* mask the blurred layer so the blur fades towards the top (0px at top, full at bottom) */
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  z-index: 0;
+}
+
+.speciesinfo {
+  color: white;
+  text-align: left;
+  background: rgba(0,0,0,.6);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 20px;
+  height: 145px;
+  padding-bottom: 25px;
+   display: flex;
+  align-items: flex-end;
+
+}
+
+.speciesinfo h4, .speciesinfo i {
+  margin: 5px 0px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+}
+
+.speciesinfo h4 {
+  font-size: 20px;
+  letter-spacing: .5px;
+}
+
+.speciesinfo i {
+  font-size: 14.5px;
+  letter-spacing: .5px;
+  color: rgba(255,255,255,0.85);
+}
+
+.colorinfo {
+  width: 150px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  margin: 10px auto;
+  border-radius: 5px;
+}
