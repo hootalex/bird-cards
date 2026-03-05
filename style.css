@@ -139,10 +139,10 @@ body {
 #loadAllCardsBtn {
   margin-top: 30px;
   padding: 12px 24px;
-  background: #4CAF50;
+  background: #4770d9;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   font-size: 14px;
   cursor: pointer;
   font-weight: bold;
@@ -151,11 +151,11 @@ body {
 }
 
 #loadAllCardsBtn:hover {
-  background: #45a049;
+  background: #4770d9;
 }
 
 #loadAllCardsBtn:active {
-  background: #3d8b40;
+  background: #4770d9;
 }
 
 .cards-gallery {
