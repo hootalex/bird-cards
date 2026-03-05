@@ -147,7 +147,6 @@ body {
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s ease;
-  text-transform: capitalize;
 }
 
 #loadAllCardsBtn:hover {
