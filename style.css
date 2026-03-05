@@ -17,6 +17,13 @@ body {
 .gallery img {
   width: 50px;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.gallery img:hover{
+    outline: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px 0px rgba(22, 27, 38, 0.20);
+  outline-offset: -1px;
 }
 
 .web {
