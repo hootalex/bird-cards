@@ -69,7 +69,7 @@ body {
 .speciesinfo {
   color: white;
   text-align: left;
-  background: rgba(0,0,0,.6);
+  background: rgba(0, 0, 0, 0);
   position: relative;
   z-index: 1;
   width: 100%;
