@@ -77,9 +77,23 @@ body {
   height: 95px;
   padding-bottom: 25px;
    display: flex;
-  align-items: flex-end;
-  background: url('img/noisetile.png') repeat;
+  align-items: flex-start;
+}
 
+.speciesinfo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("img/noisetile.png");
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .speciesinfo h4, .speciesinfo i {
